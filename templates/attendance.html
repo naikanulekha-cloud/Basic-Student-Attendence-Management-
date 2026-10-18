@@ -1,0 +1,84 @@
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance</title>
+</head>
+<body>
+
+<h1>Mark Attendance</h1>
+
+<form action="/mark_attendance" method="POST">
+
+    <label>Student:</label>
+
+    <select name="student_id">
+
+        {% for s in students %}
+
+        <option value="{{ s[0] }}">
+            {{ s[1] }}
+        </option>
+
+        {% endfor %}
+
+    </select>
+
+    <br><br>
+
+    <label>Teacher:</label>
+
+    <select name="teacher_id">
+
+        {% for t in teachers %}
+
+        <option value="{{ t[0] }}">
+            {{ t[1] }}
+        </option>
+
+        {% endfor %}
+
+    </select>
+
+    <br><br>
+
+    <label>Class:</label>
+
+    <select name="class_id">
+
+        {% for c in classes %}
+
+        <option value="{{ c[0] }}">
+            Class {{ c[0] }}
+        </option>
+
+        {% endfor %}
+
+    </select>
+
+    <br><br>
+
+    <label>Status:</label>
+
+    <select name="status">
+        <option value="Present">Present</option>
+        <option value="Absent">Absent</option>
+    </select>
+
+    <br><br>
+
+    <input type="text"
+           name="remarks"
+           placeholder="Remarks">
+
+    <br><br>
+
+    <button type="submit">
+        Mark Attendance
+    </button>
+
+</form>
+
+</body>
+</html>

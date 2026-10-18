@@ -1,0 +1,74 @@
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Classes</title>
+</head>
+<body>
+
+<h1>Classes</h1>
+
+<form action="/add_class" method="POST">
+
+    <input type="date"
+           name="class_date"
+           required>
+
+    <input type="text"
+           name="room_no"
+           placeholder="Room Number"
+           required>
+
+    <select name="course_id">
+
+        {% for c in courses %}
+
+        <option value="{{ c[0] }}">
+            {{ c[2] }}
+        </option>
+
+        {% endfor %}
+
+    </select>
+
+    <button type="submit">
+        Add Class
+    </button>
+
+</form>
+
+<h2>Class Records</h2>
+
+{% if classes %}
+
+<table border="1">
+
+<tr>
+    <th>ID</th>
+    <th>Date</th>
+    <th>Room</th>
+    <th>Course ID</th>
+</tr>
+
+{% for c in classes %}
+
+<tr>
+    <td>{{ c[0] }}</td>
+    <td>{{ c[1] }}</td>
+    <td>{{ c[2] }}</td>
+    <td>{{ c[3] }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% else %}
+
+<p>No classes found.</p>
+
+{% endif %}
+
+</body>
+</html>

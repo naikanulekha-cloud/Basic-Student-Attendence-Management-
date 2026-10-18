@@ -1,0 +1,45 @@
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reports</title>
+</head>
+<body>
+
+<h1>Attendance Reports</h1>
+
+{% if records %}
+
+<table border="1">
+
+<tr>
+    <th>Student</th>
+    <th>Teacher</th>
+    <th>Date</th>
+    <th>Status</th>
+    <th>Remarks</th>
+</tr>
+
+{% for r in records %}
+
+<tr>
+    <td>{{ r[0] }}</td>
+    <td>{{ r[1] }}</td>
+    <td>{{ r[2] }}</td>
+    <td>{{ r[3] }}</td>
+    <td>{{ r[4] }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% else %}
+
+<p>No attendance records found.</p>
+
+{% endif %}
+
+</body>
+</html>

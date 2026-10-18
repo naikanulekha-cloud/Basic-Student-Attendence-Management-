@@ -1,0 +1,52 @@
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Students</title>
+</head>
+<body>
+
+<h1>Students</h1>
+
+<form action="/add_student" method="POST">
+    <input type="text" name="name" placeholder="Name">
+    <input type="email" name="mail" placeholder="Email">
+    <input type="text" name="ph_no" placeholder="Phone">
+    <button type="submit">Add Student</button>
+</form>
+
+<h2>Student Records</h2>
+
+{% if students %}
+
+<table border="1">
+
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Email</th>
+<th>Phone</th>
+</tr>
+
+{% for s in students %}
+
+<tr>
+<td>{{ s[0] }}</td>
+<td>{{ s[1] }}</td>
+<td>{{ s[2] }}</td>
+<td>{{ s[3] }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% else %}
+
+<p>No students found in database.</p>
+
+{% endif %}
+
+</body>
+</html>

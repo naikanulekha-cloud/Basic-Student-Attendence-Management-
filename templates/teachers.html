@@ -1,0 +1,68 @@
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teachers</title>
+</head>
+<body>
+
+<h1>Teachers</h1>
+
+<form action="/add_teacher" method="POST">
+
+    <input type="text"
+           name="name"
+           placeholder="Teacher Name"
+           required>
+
+    <input type="email"
+           name="mail"
+           placeholder="Email"
+           required>
+
+    <input type="text"
+           name="ph_no"
+           placeholder="Phone"
+           required>
+
+    <button type="submit">
+        Add Teacher
+    </button>
+
+</form>
+
+<h2>Teacher Records</h2>
+
+{% if teachers %}
+
+<table border="1">
+
+<tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+</tr>
+
+{% for t in teachers %}
+
+<tr>
+    <td>{{ t[0] }}</td>
+    <td>{{ t[1] }}</td>
+    <td>{{ t[2] }}</td>
+    <td>{{ t[3] }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% else %}
+
+<p>No teachers found in database.</p>
+
+{% endif %}
+
+</body>
+</html>
